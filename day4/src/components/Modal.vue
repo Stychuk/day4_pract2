@@ -113,9 +113,9 @@ body{
 }
 
 .btn {
-    background-color: yellow;
-    border: 3px solid rgb(0, 0, 0);
-    padding: 5px 5px;
-    margin-top: 15px;
+  background-color: yellow;
+  border: 3px solid rgb(0, 0, 0);
+  padding: 5px 5px;
+   margin-top: 15px;
 }
 </style>

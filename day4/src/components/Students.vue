@@ -1,16 +1,16 @@
 <template>
     <div id="app">
-		<input type="text" name="search" v-model="search"><br>
-		<table class="table table-dark">
+		<!-- <input type="text" name="search" v-model="search"><br> -->
+		<table class="table">
             <tr v-for="(item,stud) in students" v-bind:key="item._id">
 				<td>
-                    <router-link v-bind:to="'/student-info/'+item._id">
+                    <router-link v-bind:to="'/student-info/'+item._id" class="style_stud">
                         {{item.name}}
                     </router-link>
                 </td>
                 <td><input type="checkbox" v-model="item.isDonePr"></td>
                 <td>{{item.group}}</td>
-                <td><a href = "#" @click="deleteStudent(item._id)">Видалити</a></td>
+                <td><a href = "#" @click="deleteStudent(item._id)" class="style_stud">Видалити</a></td>
                 <td>
                     <a href = "#" @click="updateStudent(stud)"><img src="pen.svg" width="30"></a>
                 </td>
@@ -22,8 +22,8 @@
 				<option value="RPZ 19 1/9">RPZ 19 1/9</option>
 				<option value="RPZ 19 2/9">RPZ 19 2/9</option>
 			</select>
-			<button @click="addStudent()">Add student</button>
-            <button @click="update()">Оновити</button>
+			<button @click="addStudent()" class="btn">Add student</button>
+            <button @click="update()" class="btn">Оновити</button>
 	</div>
 </template>
 
@@ -82,5 +82,26 @@ export default {
 </script>
 
 <style scoped>
-
+.table {
+    background-color: rgb(255, 226, 146);
+    font-size: 19px;
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.table TH {
+    font-weight: bold;
+    padding: 5px;
+    background: #00000000;
+    border: 2px solid #000000;
+}
+.table TD {
+    padding: 5px;
+    color: black;
+    border: 2px solid black;
+}
+.style_stud {
+    color: #000000;
+    font-style: italic;
+}
 </style>
