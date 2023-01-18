@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+const API_HOST = process.env.API_HOST;
 
 export default {
     data() {
@@ -40,7 +40,7 @@ export default {
         }
      },	 
      mounted: function(){
-        axios.get("http://34.82.81.113:3000/students").then((response) => {
+        this.axios.get(`${API_HOST}/students`).then((response) => {
             console.log(response.data);
             this.students = response.data;
         })
@@ -50,12 +50,12 @@ export default {
             this.students=this.students.filter(el=>{
                 return el._id != studId
             })
-            axios.delete(`http://34.82.81.113:3000/students/${studId}`).then((response)=>{
+            this.axios.delete(`${API_HOST}/students/${studId}`).then((response)=>{
                 console.log(response.data);
             })
         },
         addStudent() {
-            axios.post("http://34.82.81.113:3000/students", {
+            this.axios.post(`${API_HOST}/students`, {
                 ...this.student
             })
             .then((response) => {
@@ -69,7 +69,7 @@ export default {
             this.studentId = stud
         },
         update() {
-            axios.put(`http://34.82.81.113:3000/students/${this.students[this.studentId]._id}`, {
+            this.axios.put(`${API_HOST}/students/${this.students[this.studentId]._id}`, {
                 ...this.student
             })
             .then((response) => {
